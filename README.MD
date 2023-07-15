@@ -5,8 +5,8 @@ Q:What? A:IAB TCF Consent String Parser, yeah... another one, but it works.
 Q:Why? 
 - A: 
     - One code -> Many languages. 
-    - Other parses in [insert a language] are not always up-to-date
-    - The official parser supports JS
+    - Other parsers in [insert a language] are not always up-to-date
+    - The official parser supports JS only, rest is... meh
 
 ## Key Features 🎯
 - **One ring... to rule them all**: One code, many languages:
