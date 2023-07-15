@@ -35,10 +35,16 @@ types:
         type: b6
       - id: created
         doc: 'Timestamp'
-        type: b36
+        type: b32 # TMP: Javascript doesn't support more than 32 bits.
+      - id: created_overflow
+        doc: 'Timestamp'
+        type: b4
       - id: last_updated
         doc: 'Timestamp'
-        type: b36
+        type: b32 # TMP: Javascript doesn't support more than 32 bits.
+      - id: last_updated_overflow
+        doc: 'Timestamp'
+        type: b4
       - id: cmp
         type: cmp
       - id: gvl_version

@@ -52,8 +52,10 @@ var CoreStringSegment = (function() {
     }
     Metadata.prototype._read = function() {
       this.version = this._io.readBitsIntBe(6);
-      this.created = this._io.readBitsIntBe(36);
-      this.lastUpdated = this._io.readBitsIntBe(36);
+      this.created = this._io.readBitsIntBe(32);
+      this.createdOverflow = this._io.readBitsIntBe(4);
+      this.lastUpdated = this._io.readBitsIntBe(32);
+      this.lastUpdatedOverflow = this._io.readBitsIntBe(4);
       this._io.alignToByte();
       this.cmp = new Cmp(this._io, this, this._root);
       this.gvlVersion = this._io.readBitsIntBe(12);
@@ -88,6 +90,14 @@ var CoreStringSegment = (function() {
 
     /**
      * Supported version is above 2 (TCF 2.O)
+     */
+
+    /**
+     * Timestamp
+     */
+
+    /**
+     * Timestamp
      */
 
     /**

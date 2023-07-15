@@ -40,8 +40,10 @@ class CoreStringSegment(KaitaiStruct):
 
         def _read(self):
             self.version = self._io.read_bits_int_be(6)
-            self.created = self._io.read_bits_int_be(36)
-            self.last_updated = self._io.read_bits_int_be(36)
+            self.created = self._io.read_bits_int_be(32)
+            self.created_overflow = self._io.read_bits_int_be(4)
+            self.last_updated = self._io.read_bits_int_be(32)
+            self.last_updated_overflow = self._io.read_bits_int_be(4)
             self._io.align_to_byte()
             self.cmp = CoreStringSegment.Metadata.Cmp(self._io, self, self._root)
             self.gvl_version = self._io.read_bits_int_be(12)
