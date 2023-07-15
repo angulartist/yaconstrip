@@ -1,0 +1,64 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "433bfe8358d2772740b9f0ae9dc70d78",
+    "packages": [
+        {
+            "name": "kaitai-io/kaitai_struct_php_runtime",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kaitai-io/kaitai_struct_php_runtime.git",
+                "reference": "e21bc2a3824f1a2b37588c191596b67cb4ba03ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kaitai-io/kaitai_struct_php_runtime/zipball/e21bc2a3824f1a2b37588c191596b67cb4ba03ba",
+                "reference": "e21bc2a3824f1a2b37588c191596b67cb4ba03ba",
+                "shasum": ""
+            },
+            "require": {
+                "ext-iconv": "*",
+                "php": "^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0 || ^8.0"
+            },
+            "suggest": {
+                "ext-zlib": "for `process: zlib` support"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kaitai\\": "lib/Kaitai"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Kaitai Struct: runtime library for PHP",
+            "homepage": "https://github.com/kaitai-io/kaitai_struct_php_runtime",
+            "support": {
+                "issues": "https://github.com/kaitai-io/kaitai_struct_php_runtime/issues",
+                "chat": "https://gitter.im/kaitai_struct/Lobby",
+                "source": "https://github.com/kaitai-io/kaitai_struct_php_runtime/tree/0.10"
+            },
+            "time": "2022-07-08T00:41:18+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "kaitai-io/kaitai_struct_php_runtime": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}
