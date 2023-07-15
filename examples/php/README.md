@@ -2,7 +2,7 @@
 
 The compiled .ksy files to PHP are located in the [compiled-ksy folder](compiled_ksy)
 
-[decoder.js](decoder.js) describes how to parse the TC String segments into bit streams.
+[Decoder.php](Decoder.php) describes how to parse the TC String segments into bit streams.
 
 ### Demo
 
