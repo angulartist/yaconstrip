@@ -1,5 +1,7 @@
 # YACONSTRIP - Yet Another CONsent STRIng Parser
 
+![YACONSTRIP](docs/header.png)
+
 Q:What? A:IAB TCF Consent String Parser, yeah... another one, but it works.
 
 Q:Why? 
@@ -26,6 +28,8 @@ Q:Why?
 
 ## Roadmap 🎯
 - Add encoding examples
+- Add more examples
+- Provide plug n play modules
 
 ## Getting Started 🚀
 

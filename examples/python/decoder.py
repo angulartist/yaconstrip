@@ -17,9 +17,7 @@ class Decoder:
     @staticmethod
     def base64_to_stream(segment: str) -> UnalignedStream:
         encoded = (segment + "===").encode()
-        print(list(encoded))
         source = BytesIO(base64.urlsafe_b64decode(encoded))
-        print('segment', segment, 'buffer', list(source.getvalue()))
 
         return UnalignedStream(source)
 

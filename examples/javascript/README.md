@@ -6,7 +6,11 @@ The compiled .ksy files to Javascript are located in the [compiled-ksy folder](c
 
 ### Demo
 
+Requires Node.
+
 ```javascript
+npm i
+
 node index.js
 ```
 
