@@ -44,9 +44,9 @@ class Decoder:
             stream = self.base64_to_stream(segment)
             segment_type = stream.segment_type
 
-            if not isinstance(segment_type, int) and segment_type not in {0, 1, 2, 3}:
+            if not isinstance(segment_type, int) and segment_type not in {0, 1, 2}:
                 raise ValueError(
-                    f"segment_type: Unknown segment type. Expected int in range [0, 3], Got {stream.segment_type}."
+                    f"segment_type: Unknown segment type. Expected int in range [0, 2], Got {stream.segment_type}."
                 )
 
             try:
