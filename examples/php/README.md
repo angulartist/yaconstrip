@@ -11,5 +11,5 @@ Requires PHP 8+, Composer.
 ```php
 composer install
 
-php index.php
+php main.php
 ```

@@ -4,6 +4,8 @@ const PublisherTcSegment = require("./compiled-ksy/PublisherTcSegment");
 
 const { UnalignedKataiStream } = require("./models");
 
+const UNDESIRED_OUTPUT_KEYS = ["_io", "_parent", "_root"];
+
 class Decoder {
   constructor(consentString) {
     this.consentString = consentString;
@@ -15,6 +17,24 @@ class Decoder {
     const arrayBuffer = Buffer.from(segment, "base64url");
 
     return new UnalignedKataiStream(arrayBuffer);
+  }
+
+  removeObjectKeysDeep(obj, keys = []) {
+    if (Array.isArray(obj))
+      return obj.map((item) => this.removeObjectKeysDeep(item, keys));
+
+    if (typeof obj === "object" && obj !== null) {
+      return Object.keys(obj).reduce((previousValue, key) => {
+        return keys.includes(key)
+          ? previousValue
+          : {
+              ...previousValue,
+              [key]: this.removeObjectKeysDeep(obj[key], keys),
+            };
+      }, {});
+    }
+
+    return obj;
   }
 
   process() {
@@ -57,16 +77,24 @@ class Decoder {
       }
 
       try {
+        let res = {};
+
         switch (stream.segmentType) {
           case 0:
-            return new CoreStringSegment(stream);
+            res = new CoreStringSegment(stream);
+            break;
           case 1:
-            return new DisclosedVendorsSegment(stream);
+            res = new DisclosedVendorsSegment(stream);
+            break;
           case 2:
-            return new PublisherTcSegment(stream);
+            res = new PublisherTcSegment(stream);
+            break;
           default:
-            return {};
+            res = {};
+            break;
         }
+
+        return this.removeObjectKeysDeep(res, UNDESIRED_OUTPUT_KEYS);
       } catch (error) {
         console.error(error);
         throw new Error("Incorrect consent string format.");

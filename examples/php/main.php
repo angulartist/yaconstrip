@@ -7,4 +7,7 @@ $cs = 'CPu-GGyPu-GGyDHACAENCZCYAAAAAAAAAAQAAAAAAAAA.II7Nd_X__bX9n-_7_6ft0eY1f9_r
 
 $decoder = new Decoder($cs);
 $decodedConsentStringSegments = $decoder->process();
-var_dump($decodedConsentStringSegments);
+echo "Nb of disclosed vendors \n";
+print_r(count(array_filter($decodedConsentStringSegments[1]->vendorConsent->bitField, function($vendor_id) {
+    return !!$vendor_id;
+})));

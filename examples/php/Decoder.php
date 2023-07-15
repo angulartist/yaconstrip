@@ -28,10 +28,9 @@ class Decoder
     {
         $segment .= "===";
         $source = base64url_decode($segment);
-        print_r(unpack("C*", $source));
 
         /**
-         * Expected example bytes array:
+         * Expected example bytes array, 1st segment:
          * 
          * [
          *      8, 251, 190, 24, 108, 143, 187, 

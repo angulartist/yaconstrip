@@ -28,6 +28,17 @@ class UnaliagnedKataiStream extends \Kaitai\Struct\Stream
 
     private function reset()
     {
+        /**
+         * Warn: bits and bitsLeft are protected fields
+         * in Kaitai Stream.
+         * This makes non sense as we're unable to work
+         * with unaligned streams.
+         * 
+         * You could change these vars to public until
+         * it's fixed.
+         */
+        $this->bits = 0;
+        $this->bitsLeft = 0;
         $this->seek(0);
     }
 
