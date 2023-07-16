@@ -1,0 +1,160 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__core_string_segment {
+		label="CoreStringSegment";
+		graph[style=dotted];
+
+		core_string_segment__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="metadata_pos">0</TD><TD PORT="metadata_size">132b</TD><TD>Metadata</TD><TD PORT="metadata_type">metadata</TD></TR>
+			<TR><TD PORT="structure_pos">16:4</TD><TD PORT="structure_size">...</TD><TD>Structure</TD><TD PORT="structure_type">structure</TD></TR>
+		</TABLE>>];
+		subgraph cluster__alpha {
+			label="CoreStringSegment::Alpha";
+			graph[style=dotted];
+
+			alpha__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="left_pos">0</TD><TD PORT="left_size">6b</TD><TD>b6</TD><TD PORT="left_type">left</TD></TR>
+				<TR><TD PORT="right_pos">0:6</TD><TD PORT="right_size">6b</TD><TD>b6</TD><TD PORT="right_type">right</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__metadata {
+			label="CoreStringSegment::Metadata";
+			graph[style=dotted];
+
+			metadata__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="version_pos">0</TD><TD PORT="version_size">6b</TD><TD>b6</TD><TD PORT="version_type">version</TD></TR>
+				<TR><TD PORT="created_pos">0:6</TD><TD PORT="created_size">4</TD><TD>b32</TD><TD PORT="created_type">created</TD></TR>
+				<TR><TD PORT="created_overflow_pos">4:6</TD><TD PORT="created_overflow_size">4b</TD><TD>b4</TD><TD PORT="created_overflow_type">created_overflow</TD></TR>
+				<TR><TD PORT="last_updated_pos">5:2</TD><TD PORT="last_updated_size">4</TD><TD>b32</TD><TD PORT="last_updated_type">last_updated</TD></TR>
+				<TR><TD PORT="last_updated_overflow_pos">9:2</TD><TD PORT="last_updated_overflow_size">4b</TD><TD>b4</TD><TD PORT="last_updated_overflow_type">last_updated_overflow</TD></TR>
+				<TR><TD PORT="cmp_pos">9:6</TD><TD PORT="cmp_size">42b</TD><TD>Cmp</TD><TD PORT="cmp_type">cmp</TD></TR>
+				<TR><TD PORT="gvl_version_pos">15</TD><TD PORT="gvl_version_size">12b</TD><TD>b12</TD><TD PORT="gvl_version_type">gvl_version</TD></TR>
+			</TABLE>>];
+			subgraph cluster__cmp {
+				label="CoreStringSegment::Metadata::Cmp";
+				graph[style=dotted];
+
+				cmp__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="id_pos">0</TD><TD PORT="id_size">12b</TD><TD>b12</TD><TD PORT="id_type">id</TD></TR>
+					<TR><TD PORT="version_pos">1:4</TD><TD PORT="version_size">12b</TD><TD>b12</TD><TD PORT="version_type">version</TD></TR>
+					<TR><TD PORT="screen_pos">3</TD><TD PORT="screen_size">6b</TD><TD>b6</TD><TD PORT="screen_type">screen</TD></TR>
+					<TR><TD PORT="language_pos">3:6</TD><TD PORT="language_size">12b</TD><TD>Alpha</TD><TD PORT="language_type">language</TD></TR>
+				</TABLE>>];
+			}
+		}
+		subgraph cluster__structure {
+			label="CoreStringSegment::Structure";
+			graph[style=dotted];
+
+			structure__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="policy_version_pos">0</TD><TD PORT="policy_version_size">6b</TD><TD>b6</TD><TD PORT="policy_version_type">policy_version</TD></TR>
+				<TR><TD PORT="is_service_specific_pos">0:6</TD><TD PORT="is_service_specific_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="is_service_specific_type">is_service_specific</TD></TR>
+				<TR><TD PORT="use_non_standard_texts_pos">0:7</TD><TD PORT="use_non_standard_texts_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="use_non_standard_texts_type">use_non_standard_texts</TD></TR>
+				<TR><TD PORT="special_feature_opt_ins_pos">1</TD><TD PORT="special_feature_opt_ins_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="special_feature_opt_ins_type">special_feature_opt_ins</TD></TR>
+				<TR><TD COLSPAN="4" PORT="special_feature_opt_ins__repeat">repeat 12 times</TD></TR>
+				<TR><TD PORT="purposes_consent_pos">2:4</TD><TD PORT="purposes_consent_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="purposes_consent_type">purposes_consent</TD></TR>
+				<TR><TD COLSPAN="4" PORT="purposes_consent__repeat">repeat 24 times</TD></TR>
+				<TR><TD PORT="purposes_li_transparency_pos">5:4</TD><TD PORT="purposes_li_transparency_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="purposes_li_transparency_type">purposes_li_transparency</TD></TR>
+				<TR><TD COLSPAN="4" PORT="purposes_li_transparency__repeat">repeat 24 times</TD></TR>
+				<TR><TD PORT="sj_disclosures_pos">8:4</TD><TD PORT="sj_disclosures_size">13b</TD><TD>SjDisclosures</TD><TD PORT="sj_disclosures_type">sj_disclosures</TD></TR>
+				<TR><TD PORT="vendor_consent_pos">10:1</TD><TD PORT="vendor_consent_size">...</TD><TD>VendorSection</TD><TD PORT="vendor_consent_type">vendor_consent</TD></TR>
+				<TR><TD PORT="vendor_li_pos">...</TD><TD PORT="vendor_li_size">...</TD><TD>VendorSection</TD><TD PORT="vendor_li_type">vendor_li</TD></TR>
+				<TR><TD PORT="pub_restrictions_pos">...</TD><TD PORT="pub_restrictions_size">...</TD><TD>PubRestrictionsSection</TD><TD PORT="pub_restrictions_type">pub_restrictions</TD></TR>
+			</TABLE>>];
+			subgraph cluster__pub_restrictions_section {
+				label="CoreStringSegment::Structure::PubRestrictionsSection";
+				graph[style=dotted];
+
+				pub_restrictions_section__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="num_pub_restrictions_pos">0</TD><TD PORT="num_pub_restrictions_size">12b</TD><TD>b12</TD><TD PORT="num_pub_restrictions_type">num_pub_restrictions</TD></TR>
+					<TR><TD PORT="pub_restriction_entries_pos">1:4</TD><TD PORT="pub_restriction_entries_size">...</TD><TD>PubRestrictionEntry</TD><TD PORT="pub_restriction_entries_type">pub_restriction_entries</TD></TR>
+					<TR><TD COLSPAN="4" PORT="pub_restriction_entries__repeat">repeat num_pub_restrictions times</TD></TR>
+				</TABLE>>];
+				subgraph cluster__pub_restriction_entry {
+					label="CoreStringSegment::Structure::PubRestrictionsSection::PubRestrictionEntry";
+					graph[style=dotted];
+
+					pub_restriction_entry__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+						<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+						<TR><TD PORT="purpose_id_pos">0</TD><TD PORT="purpose_id_size">6b</TD><TD>b6</TD><TD PORT="purpose_id_type">purpose_id</TD></TR>
+						<TR><TD PORT="restriction_type_pos">0:6</TD><TD PORT="restriction_type_size">2b</TD><TD>b2</TD><TD PORT="restriction_type_type">restriction_type</TD></TR>
+						<TR><TD PORT="range_section_pos">1</TD><TD PORT="range_section_size">...</TD><TD>RangeSection</TD><TD PORT="range_section_type">range_section</TD></TR>
+						<TR><TD PORT="num_entries_pos">...</TD><TD PORT="num_entries_size">12b</TD><TD>b12</TD><TD PORT="num_entries_type">num_entries</TD></TR>
+						<TR><TD PORT="range_entries_pos">...</TD><TD PORT="range_entries_size">33b</TD><TD>RangeEntry</TD><TD PORT="range_entries_type">range_entries</TD></TR>
+						<TR><TD COLSPAN="4" PORT="range_entries__repeat">repeat num_entries times</TD></TR>
+					</TABLE>>];
+				}
+			}
+			subgraph cluster__vendor_section {
+				label="CoreStringSegment::Structure::VendorSection";
+				graph[style=dotted];
+
+				vendor_section__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="max_vendor_id_pos">0</TD><TD PORT="max_vendor_id_size">2</TD><TD>b16</TD><TD PORT="max_vendor_id_type">max_vendor_id</TD></TR>
+					<TR><TD PORT="is_range_encoding_pos">2</TD><TD PORT="is_range_encoding_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="is_range_encoding_type">is_range_encoding</TD></TR>
+					<TR><TD PORT="bit_field_pos">2:1</TD><TD PORT="bit_field_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="bit_field_type">bit_field</TD></TR>
+					<TR><TD COLSPAN="4" PORT="bit_field__repeat">repeat max_vendor_id times</TD></TR>
+					<TR><TD PORT="range_section_pos">...</TD><TD PORT="range_section_size">...</TD><TD>RangeSection</TD><TD PORT="range_section_type">range_section</TD></TR>
+				</TABLE>>];
+			}
+			subgraph cluster__range_section {
+				label="CoreStringSegment::Structure::RangeSection";
+				graph[style=dotted];
+
+				range_section__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="num_entries_pos">0</TD><TD PORT="num_entries_size">12b</TD><TD>b12</TD><TD PORT="num_entries_type">num_entries</TD></TR>
+					<TR><TD PORT="range_entries_pos">1:4</TD><TD PORT="range_entries_size">33b</TD><TD>RangeEntry</TD><TD PORT="range_entries_type">range_entries</TD></TR>
+					<TR><TD COLSPAN="4" PORT="range_entries__repeat">repeat num_entries times</TD></TR>
+				</TABLE>>];
+			}
+			subgraph cluster__sj_disclosures {
+				label="CoreStringSegment::Structure::SjDisclosures";
+				graph[style=dotted];
+
+				sj_disclosures__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="purpose_one_treatment_pos">0</TD><TD PORT="purpose_one_treatment_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="purpose_one_treatment_type">purpose_one_treatment</TD></TR>
+					<TR><TD PORT="pub_country_pos">0:1</TD><TD PORT="pub_country_size">12b</TD><TD>Alpha</TD><TD PORT="pub_country_type">pub_country</TD></TR>
+				</TABLE>>];
+			}
+			subgraph cluster__range_entry {
+				label="CoreStringSegment::Structure::RangeEntry";
+				graph[style=dotted];
+
+				range_entry__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="is_a_range_pos">0</TD><TD PORT="is_a_range_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="is_a_range_type">is_a_range</TD></TR>
+					<TR><TD PORT="start_or_only_vendor_id_pos">0:1</TD><TD PORT="start_or_only_vendor_id_size">2</TD><TD>b16</TD><TD PORT="start_or_only_vendor_id_type">start_or_only_vendor_id</TD></TR>
+					<TR><TD PORT="end_vendor_id_pos">2:1</TD><TD PORT="end_vendor_id_size">2</TD><TD>b16</TD><TD PORT="end_vendor_id_type">end_vendor_id</TD></TR>
+				</TABLE>>];
+			}
+		}
+	}
+	core_string_segment__seq:metadata_type -> metadata__seq [style=bold];
+	core_string_segment__seq:structure_type -> structure__seq [style=bold];
+	metadata__seq:cmp_type -> cmp__seq [style=bold];
+	cmp__seq:language_type -> alpha__seq [style=bold];
+	structure__seq:sj_disclosures_type -> sj_disclosures__seq [style=bold];
+	structure__seq:vendor_consent_type -> vendor_section__seq [style=bold];
+	structure__seq:vendor_li_type -> vendor_section__seq [style=bold];
+	structure__seq:pub_restrictions_type -> pub_restrictions_section__seq [style=bold];
+	pub_restrictions_section__seq:pub_restriction_entries_type -> pub_restriction_entry__seq [style=bold];
+	pub_restrictions_section__seq:num_pub_restrictions_type -> pub_restrictions_section__seq:pub_restriction_entries__repeat [color="#404040"];
+	pub_restriction_entry__seq:range_section_type -> range_section__seq [style=bold];
+	pub_restriction_entry__seq:range_entries_type -> range_entry__seq [style=bold];
+	pub_restriction_entry__seq:num_entries_type -> pub_restriction_entry__seq:range_entries__repeat [color="#404040"];
+	vendor_section__seq:max_vendor_id_type -> vendor_section__seq:bit_field__repeat [color="#404040"];
+	vendor_section__seq:range_section_type -> range_section__seq [style=bold];
+	range_section__seq:range_entries_type -> range_entry__seq [style=bold];
+	range_section__seq:num_entries_type -> range_section__seq:range_entries__repeat [color="#404040"];
+	sj_disclosures__seq:pub_country_type -> alpha__seq [style=bold];
+}

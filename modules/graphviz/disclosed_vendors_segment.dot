@@ -1,0 +1,54 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__disclosed_vendors_segment {
+		label="DisclosedVendorsSegment";
+		graph[style=dotted];
+
+		disclosed_vendors_segment__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="segment_type_pos">0</TD><TD PORT="segment_type_size">3b</TD><TD>b3</TD><TD PORT="segment_type_type">segment_type</TD></TR>
+			<TR><TD PORT="vendor_consent_pos">0:3</TD><TD PORT="vendor_consent_size">...</TD><TD>VendorSection</TD><TD PORT="vendor_consent_type">vendor_consent</TD></TR>
+		</TABLE>>];
+		subgraph cluster__vendor_section {
+			label="DisclosedVendorsSegment::VendorSection";
+			graph[style=dotted];
+
+			vendor_section__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="max_vendor_id_pos">0</TD><TD PORT="max_vendor_id_size">2</TD><TD>b16</TD><TD PORT="max_vendor_id_type">max_vendor_id</TD></TR>
+				<TR><TD PORT="is_range_encoding_pos">2</TD><TD PORT="is_range_encoding_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="is_range_encoding_type">is_range_encoding</TD></TR>
+				<TR><TD PORT="bit_field_pos">2:1</TD><TD PORT="bit_field_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="bit_field_type">bit_field</TD></TR>
+				<TR><TD COLSPAN="4" PORT="bit_field__repeat">repeat max_vendor_id times</TD></TR>
+				<TR><TD PORT="range_section_pos">...</TD><TD PORT="range_section_size">...</TD><TD>RangeSection</TD><TD PORT="range_section_type">range_section</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__range_section {
+			label="DisclosedVendorsSegment::RangeSection";
+			graph[style=dotted];
+
+			range_section__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="num_entries_pos">0</TD><TD PORT="num_entries_size">12b</TD><TD>b12</TD><TD PORT="num_entries_type">num_entries</TD></TR>
+				<TR><TD PORT="range_entries_pos">1:4</TD><TD PORT="range_entries_size">33b</TD><TD>RangeEntry</TD><TD PORT="range_entries_type">range_entries</TD></TR>
+				<TR><TD COLSPAN="4" PORT="range_entries__repeat">repeat num_entries times</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__range_entry {
+			label="DisclosedVendorsSegment::RangeEntry";
+			graph[style=dotted];
+
+			range_entry__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="is_a_range_pos">0</TD><TD PORT="is_a_range_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="is_a_range_type">is_a_range</TD></TR>
+				<TR><TD PORT="start_or_only_vendor_id_pos">0:1</TD><TD PORT="start_or_only_vendor_id_size">2</TD><TD>b16</TD><TD PORT="start_or_only_vendor_id_type">start_or_only_vendor_id</TD></TR>
+				<TR><TD PORT="end_vendor_id_pos">2:1</TD><TD PORT="end_vendor_id_size">2</TD><TD>b16</TD><TD PORT="end_vendor_id_type">end_vendor_id</TD></TR>
+			</TABLE>>];
+		}
+	}
+	disclosed_vendors_segment__seq:vendor_consent_type -> vendor_section__seq [style=bold];
+	vendor_section__seq:max_vendor_id_type -> vendor_section__seq:bit_field__repeat [color="#404040"];
+	vendor_section__seq:range_section_type -> range_section__seq [style=bold];
+	range_section__seq:range_entries_type -> range_entry__seq [style=bold];
+	range_section__seq:num_entries_type -> range_section__seq:range_entries__repeat [color="#404040"];
+}

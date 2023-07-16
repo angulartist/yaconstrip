@@ -1,0 +1,129 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>DisclosedVendorsSegment format specification</title>
+  </head>
+  <body>
+           <div class="container">
+  <h1>DisclosedVendorsSegment format specification</h1>
+
+      
+<a name='type-disclosed_vendors_segment'></a>
+<h1>Type: DisclosedVendorsSegment</h1>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>segment_type</td>
+<td>b3</td>
+<td></td>
+</tr>
+<tr>
+<td>0:3</td>
+<td>...</td>
+<td>vendor_consent</td>
+<td><a href="#type-disclosed_vendors_segment-vendor_section">VendorSection</a></td>
+<td></td>
+</tr>
+</table>
+<a name='type-disclosed_vendors_segment-vendor_section'></a>
+<h2>Type: VendorSection</h2>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>max_vendor_id</td>
+<td>b16</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>...</td>
+<td>is_range_encoding</td>
+<td>BitsType1(BigBitEndian)</td>
+<td></td>
+</tr>
+<tr>
+<td>2:1</td>
+<td>...</td>
+<td>bit_field</td>
+<td>BitsType1(BigBitEndian)</td>
+<td></td>
+</tr>
+<tr>
+<td>???</td>
+<td>...</td>
+<td>range_section</td>
+<td><a href="#type-disclosed_vendors_segment-range_section">RangeSection</a></td>
+<td></td>
+</tr>
+</table>
+<a name='type-disclosed_vendors_segment-range_section'></a>
+<h2>Type: RangeSection</h2>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>num_entries</td>
+<td>b12</td>
+<td></td>
+</tr>
+<tr>
+<td>1:4</td>
+<td>...</td>
+<td>range_entries</td>
+<td><a href="#type-disclosed_vendors_segment-range_entry">RangeEntry</a></td>
+<td></td>
+</tr>
+</table>
+<a name='type-disclosed_vendors_segment-range_entry'></a>
+<h2>Type: RangeEntry</h2>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>is_a_range</td>
+<td>BitsType1(BigBitEndian)</td>
+<td></td>
+</tr>
+<tr>
+<td>0:1</td>
+<td>...</td>
+<td>start_or_only_vendor_id</td>
+<td>b16</td>
+<td></td>
+</tr>
+<tr>
+<td>2:1</td>
+<td>...</td>
+<td>end_vendor_id</td>
+<td>b16</td>
+<td></td>
+</tr>
+</table>
+
+  </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
+      

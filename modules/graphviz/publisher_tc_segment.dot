@@ -1,0 +1,24 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__publisher_tc_segment {
+		label="PublisherTcSegment";
+		graph[style=dotted];
+
+		publisher_tc_segment__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="segment_type_pos">0</TD><TD PORT="segment_type_size">3b</TD><TD>b3</TD><TD PORT="segment_type_type">segment_type</TD></TR>
+			<TR><TD PORT="pub_purposes_consent_pos">0:3</TD><TD PORT="pub_purposes_consent_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="pub_purposes_consent_type">pub_purposes_consent</TD></TR>
+			<TR><TD COLSPAN="4" PORT="pub_purposes_consent__repeat">repeat 24 times</TD></TR>
+			<TR><TD PORT="pub_purposes_li_transparency_pos">3:3</TD><TD PORT="pub_purposes_li_transparency_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="pub_purposes_li_transparency_type">pub_purposes_li_transparency</TD></TR>
+			<TR><TD COLSPAN="4" PORT="pub_purposes_li_transparency__repeat">repeat 24 times</TD></TR>
+			<TR><TD PORT="num_custom_purposes_pos">6:3</TD><TD PORT="num_custom_purposes_size">6b</TD><TD>b6</TD><TD PORT="num_custom_purposes_type">num_custom_purposes</TD></TR>
+			<TR><TD PORT="custom_purposes_consent_pos">7:1</TD><TD PORT="custom_purposes_consent_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="custom_purposes_consent_type">custom_purposes_consent</TD></TR>
+			<TR><TD COLSPAN="4" PORT="custom_purposes_consent__repeat">repeat num_custom_purposes times</TD></TR>
+			<TR><TD PORT="custom_purposes_li_transparency_pos">...</TD><TD PORT="custom_purposes_li_transparency_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="custom_purposes_li_transparency_type">custom_purposes_li_transparency</TD></TR>
+			<TR><TD COLSPAN="4" PORT="custom_purposes_li_transparency__repeat">repeat num_custom_purposes times</TD></TR>
+		</TABLE>>];
+	}
+	publisher_tc_segment__seq:num_custom_purposes_type -> publisher_tc_segment__seq:custom_purposes_consent__repeat [color="#404040"];
+	publisher_tc_segment__seq:num_custom_purposes_type -> publisher_tc_segment__seq:custom_purposes_li_transparency__repeat [color="#404040"];
+}

@@ -1,0 +1,1 @@
+kaitai-struct-compiler --outdir modules/ -t all kaitai/*
