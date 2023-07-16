@@ -68,12 +68,11 @@ RSpec.describe Decoder do
                     expect(core_string_segment.metadata.created_overflow).to eq(2)
                     expect(core_string_segment.metadata.last_updated).to eq(1055884827)
                     expect(core_string_segment.metadata.last_updated_overflow).to eq(2)
-                    expect(core_string_segment.metadata.last_updated_overflow).to eq(2)
                 end
     
                 describe '#consent management platform' do
                     it 'can decode the metadata.cmp' do
-                        expect(core_string_segment.metadata.cmp.id).to eq(199)
+                        expect(core_string_segment.metadata.cmp.id).to eq(199)https://file+.vscode-resource.vscode-cdn.net/Users/macbook/Documents/consent-string-parser-tcf/docs/header.png
                         expect(core_string_segment.metadata.cmp.version).to eq(2)
                         expect(core_string_segment.metadata.cmp.screen).to eq(0)
                     end
