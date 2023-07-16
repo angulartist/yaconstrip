@@ -54,11 +54,7 @@ Step 1: Clone this repository:
 git clone https://github.com/angulartist/yaconstrip.git && cd yaconstrip
 ```
 
-Step 2: Install the dependencies:
-
-```bash
-pip install -r requirements.txt
-```
+Step 2: Import the modules you want from `modules/`
 
 ### Compile the .ksy files
 
