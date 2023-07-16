@@ -2,13 +2,16 @@
 
 ![YACONSTRIP](docs/header.png)
 
-Q:What? A:IAB TCF Consent String Parser, yeah... another one, but it works.
+Q:What?
+A: IAB TCF Consent String Parser, yeah... another one, but it works, in multiple languages.
 
 Q:Why? 
-- A: 
-    - One code -> Many languages. 
-    - Other parsers in [insert a language] are not always up-to-date
-    - The official parser supports JS only, rest is... meh
+A: Many of the existing TC String parsers are abandonned projects, or they do not comply
+with the latest IAB TCF specifications. When the specification changes, you can make sure that
+99% of the repos are outdated and it takes months, years or never to have them updated.
+
+Instead, let's create a single source of truth, and generate parsers in many languages to make TC String parsing universal.
+
 
 ## Key Features 🎯
 - **One ring... to rule them all**: One code, many languages:
