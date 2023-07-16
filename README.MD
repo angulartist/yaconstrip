@@ -63,10 +63,14 @@ pip install -r requirements.txt
 ### Compile the .ksy files
 
 ```bash
+# language specific
 kaitai-struct-compiler --outdir [path/to/output/dir] -t [language] [path/to/.ksy/files]
 
-# Example (Compile .ksy for Javascript)
+# example (compile .ksy for Javascript)
 kaitai-struct-compiler --outdir examples/javascript/compiled_ksy -t javascript kaitai/*
+
+# or, build modules for all supported languages
+./compile-all.sh
 ```
 
 ## Examples ✨
