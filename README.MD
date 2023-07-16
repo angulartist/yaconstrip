@@ -1,5 +1,7 @@
 # YACONSTRIP - Yet Another CONsent STRIng Parser
 
+Universal Consent String Parsing
+
 ![YACONSTRIP](docs/header.png)
 
 Q:What?
