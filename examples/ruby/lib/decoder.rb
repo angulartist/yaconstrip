@@ -21,11 +21,6 @@ class Decoder
         segments = @consent_string.split('.')
         puts "Found #{segments.length} segments in the provided TC String."
 
-        if segments.length < 2
-            raise Exception.new "Expecting at least two segments in the TC String (Core + Publisher TC)."
-        end
-
-
         return segments.map.with_index do |segment, index|
             puts "Working on segment #{segment}, index=#{index}"
             stream = self.base64_to_bit_stream(segment)

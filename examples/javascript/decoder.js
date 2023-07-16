@@ -41,12 +41,6 @@ class Decoder {
     const segments = this.consentString.split(".");
     console.log("Found", segments.length, "segments in the provided TC String");
 
-    if (segments.length < 2) {
-      throw new Error(
-        "Expecting at least two segments in the TC String (Core + Publisher TC)."
-      );
-    }
-
     return segments.map((segment, index) => {
       console.log("Processing segment", segment);
 

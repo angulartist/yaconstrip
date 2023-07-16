@@ -48,10 +48,6 @@ class Decoder
         $segmentsCount = count($segments);
         echo "Found $segmentsCount segments in the provided TC String. \n";
 
-        if ($segmentsCount < 2) {
-            throw new Exception("Expecting at least two segments in the TC String (Core + Publisher TC).");
-        }
-
         return array_map(function ($segment, $index) {
             echo "Processing segment '$segment'. \n";
 
