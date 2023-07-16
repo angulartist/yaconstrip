@@ -14,8 +14,21 @@ with the latest IAB TCF specifications. When the specification changes, you can 
 
 Instead, let's create a single source of truth, and generate parsers in many languages to make TC String parsing universal.
 
-TC String: `the_core_string.`
+## Visual representation of the TC String
+TC String structure: `[CORE].[DISCLOSED_VENDORS].[PUBLISHER_RESTRICTIONS]` or `[CORE].[PUBLISHER_RESTRICTIONS]` or `[CORE]`
 
+### Core:
+
+![](docs/core_string.svg)
+
+
+### Disclosed Vendors:
+
+![](docs/disclosed_vendors.svg)
+
+### Publisher Purposes Transparency and Consent:
+
+![](docs/publisher_tc.svg)
 
 ## Key Features 🎯
 - **One ring... to rule them all**: One code, many languages:
@@ -95,19 +108,3 @@ Got a pull request? Open it, and we'll review it as soon as possible.
 
 - IAB TCF DOC : [Official IAB TCF Consent String Documentation](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md)
 - About Kaitai Struct : https://kaitai.io/
-
-## Visual representation of the TC String
-TC String structure: `[CORE].[DISCLOSED_VENDORS].[PUBLISHER_RESTRICTIONS]` or `[CORE].[PUBLISHER_RESTRICTIONS]` or `[CORE]`
-
-### Core:
-
-![](docs/core_string.svg)
-
-
-### Disclosed Vendors:
-
-![](docs/disclosed_vendors.svg)
-
-### Publisher Purposes Transparency and Consent:
-
-![](docs/publisher_tc.svg)
