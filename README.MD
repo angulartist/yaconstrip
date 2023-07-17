@@ -7,15 +7,8 @@ Universal Consent String Parsing
 Q:What?
 A: IAB TCF Consent String Parser, yeah... another one, but it works, in multiple languages.
 
-Q:Why? 
-A: Many of the existing TC String parsers are abandonned projects, or they do not comply
-with the latest IAB TCF specifications. When the specification changes, you can make sure that
-99% of the repos are outdated and it takes months, years or never to have them updated.
-
-Instead, let's create a single source of truth, and generate parsers in many languages to make TC String parsing universal.
-
 ## Visual representation of the TC String
-TC String structure: `[CORE].[DISCLOSED_VENDORS].[PUBLISHER_RESTRICTIONS]` or `[CORE].[PUBLISHER_RESTRICTIONS]` or `[CORE]`
+TC String structure: `[CORE].[DISCLOSED_VENDORS].[PUBLISHER_RESTRICTIONS]`
 
 ### Core:
 
@@ -47,9 +40,7 @@ TC String structure: `[CORE].[DISCLOSED_VENDORS].[PUBLISHER_RESTRICTIONS]` or `[
 
 
 ## Roadmap 🎯
-- Add encoding examples
 - Add more examples
-- Provide plug n play modules
 
 ## Getting Started 🚀
 
@@ -58,7 +49,6 @@ Follow these instructions to get a copy of the project up and running on your lo
 ### Prerequisites 📋
 
 Ensure you have the following installed:
-- Python 3
 - [Kaitai Struct Compiler](https://kaitai.io/#download)
 
 Optionally, you might want the [Kaitai Struct Visualizer](https://github.com/kaitai-io/kaitai_struct_visualizer)
