@@ -7,7 +7,7 @@ Universal Consent String Parsing
 Q:What?
 A: IAB TCF Consent String Parser, yeah... another one, but it works, in multiple languages.
 
-## Visual representation of the TC String
+## Block diagram of the TC String
 TC String structure: `[CORE].[DISCLOSED_VENDORS].[PUBLISHER_RESTRICTIONS]`
 
 ### Core:
